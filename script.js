@@ -62,3 +62,37 @@ if (featuredTrack) {
   // Start autoplay
   startAutoSlide();
 }
+const ageGate = document.getElementById("age-gate");
+const ageYes = document.getElementById("age-yes");
+const ageNo = document.getElementById("age-no");
+
+function openAgeGate() {
+  if (!ageGate) return;
+  document.body.classList.add("age-gate-open");
+  ageGate.classList.remove("hidden");
+}
+
+function closeAgeGate() {
+  if (!ageGate) return;
+  document.body.classList.remove("age-gate-open");
+  ageGate.classList.add("hidden");
+}
+
+if (ageGate && ageYes && ageNo) {
+  const alreadyVerified = localStorage.getItem("ageVerified") === "true";
+
+  if (alreadyVerified) {
+    closeAgeGate();
+  } else {
+    openAgeGate();
+  }
+
+  ageYes.addEventListener("click", () => {
+    localStorage.setItem("ageVerified", "true");
+    closeAgeGate();
+  });
+
+  ageNo.addEventListener("click", () => {
+    window.location.href = "https://www.google.com";
+  });
+}

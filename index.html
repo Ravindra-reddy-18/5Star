@@ -4,13 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Five Star Liquors in Crown Point, Indiana, right off I65, offers rare bourbon allocations, craft beer, tequila, tastings, and weekly deals. Text us for bottle alerts.">
+  <meta name="description" content="Five Star Liquors in Crown Point, Indiana, right off I65, offers rare bourbon, whiskies, craft beer, tequila, champagnes, tastings, and weekly deals. Text us for bottle alerts.">
   <meta name="google-site-verification" content="tvJbNNr0xcxlRRo2vasfWrqe6aADzrX-kxy9bRBBJkc" />
-  <title>Five Star Liquors | Crown Point IN Liquor Store | Allocations & Craft Beer</title>
+  <title>Five Star Liquors | Crown Point IN Liquor Store | Rare Bourbons & Deals</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <div id="age-gate" class="age-gate" aria-modal="true" role="dialog">
+  <div class="age-gate-content">
+    <h2>Are you 21 or older?</h2>
+    <p>You must be of legal drinking age to enter this site.</p>
+    <p class="age-note">By entering, you confirm you are 21+.</p>
+
+    <div class="age-buttons">
+      <button id="age-yes" type="button">Yes, I am 21+</button>
+      <button id="age-no" type="button">No</button>
+    </div>
+  </div>
+</div>
   <header class="site-header">
     <div class="brand">
       <div class="brand-mark">
@@ -23,9 +35,9 @@
     </div>
     <nav class="site-nav">
       <a href="#allocations">Allocations</a>
-      <a href="#craft-beers">Craft Beers</a>
-      <a href="#champagnes">Champagnes</a>
       <a href="#tequilas">Tequilas</a>
+      <a href="#champagnes">Champagnes</a>
+      <a href="#craft-beers">Craft Beers</a>
       <!--<a href="#tastings">Tastings</a>-->
       <a href="#deals">Deals</a>
     </nav>
@@ -101,6 +113,9 @@
         <a class="cta" href="sms:2199161983?body=FIVESTAR">
           Text FIVESTAR to 219-916-1983
         </a>
+        <p class="hero-copy" style="padding-top: 10px;">
+          By signing up, you confirm you are 21+ and agree to receive SMS from Five Star Liquors.
+        </p>
       </div>
     </section>
 
@@ -108,7 +123,7 @@
     <section id="allocations" class="content-section">
       <div class="section-head">
         <div>
-          <h2>Allocations</h2>
+          <h2>Rare Bourbons & Whiskies</h2>
           <p>Limited-release bottles with live availability.</p>
         </div>
         <div class="carousel-controls">
@@ -180,76 +195,76 @@
       </div>
     </section>
 
-    <!-- CRAFT BEERS SECTION -->
-    <section id="craft-beers" class="content-section alt">
+    <!-- TEQUILAS SECTION -->
+    <section id="tequilas" class="content-section alt">
       <div class="section-head">
         <div>
-          <h2>Craft Beers</h2>
-          <p>Seasonal releases and fresh local drops.</p>
+          <h2>Tequilas</h2>
+          <p>Premium añejo, reposado, and tasting picks.</p>
         </div>
         <div class="carousel-controls">
-          <button class="carousel-btn" data-carousel="craft" data-direction="prev">‹</button>
-          <button class="carousel-btn" data-carousel="craft" data-direction="next">›</button>
+          <button class="carousel-btn" data-carousel="tequila" data-direction="prev">‹</button>
+          <button class="carousel-btn" data-carousel="tequila" data-direction="next">›</button>
         </div>
       </div>
-      <div class="carousel" data-carousel-track="craft">
+      <div class="carousel" data-carousel-track="tequila">
         <article class="card">
           <div class="card-image">
-            <img src="images/Craft Beer/Christmas_Ale.webp" alt="Christmas Ale" loading="lazy" width="300" height="400" />
+            <img src="images/Tequila/CasinoAnejo.webp" alt="Casino Azul" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Christmas Ale</h3>
-          <p>A holiday classic</p>
-          <span class="pill">Seasonal</span>
+          <h3>Casino Azul Anejo</h3>
+          <p>light beige straw color, pleasant aroma with good complexity, smooth floral overtones, leathery wood smells</p>
+          <span class="pill">New batch</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Craft Beer/sierra-nevada-pale-ale.jpg" alt="Sierra Nevada Pale Ale" loading="lazy" width="300" height="400" />
+            <img src="images/Tequila/Clase_Azul_Reposado_Tequila.webp" alt="Clase Azul" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Sierra Nevada Pale Ale</h3>
-          <p>Heavy on hops</p>
-          <span class="pill">New Release</span>
+          <h3>Clase Azul Reposado</h3>
+          <p>Bright agave, pepper finish.</p>
+          <span class="pill">Staff pick</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Craft Beer/Goose_Island_Bourbon_County.jpeg" alt="Goose Island" loading="lazy" width="300" height="400" />
+            <img src="images/Tequila/CasinoAzul_tower.jpg" alt="Casino Azul Tower" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Goose Island Bourbon County</h3>
-          <p>Aged Beer in Heaven Hill Barrerls</p>
+          <h3>Casino Azul Tower</h3>
+          <p>Casino Azul, 3-in-1, Blanco, Repo, & Anejo</p>
           <span class="pill">Limited</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Craft Beer/Sammuel_Adams_Winter" alt="Winter White Ale" loading="lazy" width="300" height="400" />
+            <img src="images/Tequila/Casino_boat.jpg" alt="Casino Azul Boat" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Sameul Adams Winter White Ale</h3>
-          <p>Bright, crisp, and easy drinking.</p>
-          <span class="pill">On Sale - 12.99</span>
+          <h3>Casino Azul Boat</h3>
+          <p>Casino Azul Ship Edition Anejo Tequila</p>
+          <span class="pill">Rare</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Craft Beer/mango_cart.webp" alt="Mango Cart" loading="lazy" width="300" height="400" />
+            <img src="images/Tequila/DonJulio1942_1.webp" alt="Don Julio 1942" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Mango Cart</h3>
-          <p>Refreshing and Citrusy</p>
-          <span class="pill">New release</span>
+          <h3>Don Julio 1942</h3>
+          <p>Aged for a minimum of two and a half years in American white-oak barrels</p>
+          <span class="pill">Rare</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Craft Beer/bells-hopslam-can.jpg" alt="Hop Slam" loading="lazy" width="300" height="400" />
+            <img src="images/Tequila/Patron.webp" alt="Patron" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Bells Hop Slam</h3>
-          <p>Get slammed with Hops</p>
+          <h3>Patron Anejo</h3>
+          <p>100% Weber Blue Agave and aged for 12 to 15 months in oak whiskey barrels</p>
           <span class="pill">Limited</span>
           </div>
         </article>
@@ -332,76 +347,76 @@
       </div>
     </section>
 
-    <!-- TEQUILAS SECTION -->
-    <section id="tequilas" class="content-section alt">
+    <!-- CRAFT BEERS SECTION -->
+    <section id="craft-beers" class="content-section alt">
       <div class="section-head">
         <div>
-          <h2>Tequilas</h2>
-          <p>Premium añejo, reposado, and tasting picks.</p>
+          <h2>Craft Beers</h2>
+          <p>Seasonal releases and fresh local drops.</p>
         </div>
         <div class="carousel-controls">
-          <button class="carousel-btn" data-carousel="tequila" data-direction="prev">‹</button>
-          <button class="carousel-btn" data-carousel="tequila" data-direction="next">›</button>
+          <button class="carousel-btn" data-carousel="craft" data-direction="prev">‹</button>
+          <button class="carousel-btn" data-carousel="craft" data-direction="next">›</button>
         </div>
       </div>
-      <div class="carousel" data-carousel-track="tequila">
+      <div class="carousel" data-carousel-track="craft">
         <article class="card">
           <div class="card-image">
-            <img src="images/Tequila/CasinoAnejo.webp" alt="Casino Azul" loading="lazy" width="300" height="400" />
+            <img src="images/Craft Beer/Christmas_Ale.webp" alt="Christmas Ale" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Casino Azul Anejo</h3>
-          <p>light beige straw color, pleasant aroma with good complexity, smooth floral overtones, leathery wood smells</p>
-          <span class="pill">New batch</span>
+          <h3>Christmas Ale</h3>
+          <p>A holiday classic</p>
+          <span class="pill">Seasonal</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Tequila/Clase_Azul_Reposado_Tequila.webp" alt="Clase Azul" loading="lazy" width="300" height="400" />
+            <img src="images/Craft Beer/sierra-nevada-pale-ale.jpg" alt="Sierra Nevada Pale Ale" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Clase Azul Reposado</h3>
-          <p>Bright agave, pepper finish.</p>
-          <span class="pill">Staff pick</span>
+          <h3>Sierra Nevada Pale Ale</h3>
+          <p>Heavy on hops</p>
+          <span class="pill">New Release</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Tequila/CasinoAzul_tower.jpg" alt="Casino Azul Tower" loading="lazy" width="300" height="400" />
+            <img src="images/Craft Beer/Goose_Island_Bourbon_County.jpeg" alt="Goose Island" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Casino Azul Tower</h3>
-          <p>Casino Azul, 3-in-1, Blanco, Repo, & Anejo</p>
+          <h3>Goose Island Bourbon County</h3>
+          <p>Aged Beer in Heaven Hill Barrerls</p>
           <span class="pill">Limited</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Tequila/Casino_boat.jpg" alt="Casino Azul Boat" loading="lazy" width="300" height="400" />
+            <img src="images/Craft Beer/Sammuel_Adams_Winter" alt="Winter White Ale" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Casino Azul Boat</h3>
-          <p>Casino Azul Ship Edition Anejo Tequila</p>
-          <span class="pill">Rare</span>
+          <h3>Sameul Adams Winter White Ale</h3>
+          <p>Bright, crisp, and easy drinking.</p>
+          <span class="pill">On Sale - 12.99</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Tequila/DonJulio1942_1.webp" alt="Don Julio 1942" loading="lazy" width="300" height="400" />
+            <img src="images/Craft Beer/mango_cart.webp" alt="Mango Cart" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Don Julio 1942</h3>
-          <p>Aged for a minimum of two and a half years in American white-oak barrels</p>
-          <span class="pill">Rare</span>
+          <h3>Mango Cart</h3>
+          <p>Refreshing and Citrusy</p>
+          <span class="pill">New release</span>
           </div>
         </article>
         <article class="card">
           <div class="card-image">
-            <img src="images/Tequila/Patron.webp" alt="Patron" loading="lazy" width="300" height="400" />
+            <img src="images/Craft Beer/bells-hopslam-can.jpg" alt="Hop Slam" loading="lazy" width="300" height="400" />
           </div>
           <div class="card-body">
-          <h3>Patron Anejo</h3>
-          <p>100% Weber Blue Agave and aged for 12 to 15 months in oak whiskey barrels</p>
+          <h3>Bells Hop Slam</h3>
+          <p>Get slammed with Hops</p>
           <span class="pill">Limited</span>
           </div>
         </article>
@@ -480,6 +495,22 @@
       </div>
     </section>
 
+  <section class="store-gallery">
+  <h2>Inside Five Star Liquors</h2>
+
+  <div class="gallery-grid">
+    <!-- Outside (featured bigger) -->
+    <img src="images/Store Photos/front.jpg" alt="Five Star Liquors storefront" class="featured">
+
+    <!-- Inside images -->
+    <img src="images/Store Photos/masedonian.jpg" alt="Liquor shelves">
+    <img src="images/Store Photos/bourbons.jpg" alt="Whiskey selection">
+    <img src="images/Store Photos/wine.jpg" alt="Wine section">
+    <img src="images/Store Photos/coldrtds.jpg" alt="Craft Beers">
+    <img src="images/Store Photos/cooler.jpg" alt="Beer section">
+  </div>
+</section>
+
     <!-- CTA BANNER 
     <section class="cta-banner">
       <div>
@@ -535,7 +566,7 @@
     </div>
     <div>
       <h3>Stay in the loop</h3>
-      <p>Text “FIVESTAR” to 219-916-1983 for weekly drops.</p>
+      <p>Text “FIVESTAR” to 219-916-1983 for weekly deals.</p>
     </div>
   </footer>
 
