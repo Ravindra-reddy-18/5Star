@@ -96,3 +96,14 @@ if (ageGate && ageYes && ageNo) {
     window.location.href = "https://www.google.com";
   });
 }
+const consentCheck = document.getElementById("sms-consent-check");
+const smsJoinBtn = document.getElementById("sms-join-btn");
+
+if (consentCheck && smsJoinBtn) {
+  consentCheck.addEventListener("change", () => {
+    const isChecked = consentCheck.checked;
+
+    smsJoinBtn.classList.toggle("cta-disabled", !isChecked);
+    smsJoinBtn.setAttribute("aria-disabled", String(!isChecked));
+  });
+}
