@@ -13,13 +13,17 @@
 <body>
   <div id="age-gate" class="age-gate" aria-modal="true" role="dialog">
   <div class="age-gate-content">
-    <h2>Are you 21 or older?</h2>
-    <p>You must be of legal drinking age to enter this site.</p>
-    <p class="age-note">By entering, you confirm you are 21+.</p>
+    <h2>Verify Your Age</h2>
+    <p>You must be 21 or older to enter this site.</p>
+
+    <label for="dob" class="dob-label">Date of Birth</label>
+    <input id="dob" type="date" max="" />
+
+    <p id="age-error" class="age-error"></p>
 
     <div class="age-buttons">
-      <button id="age-yes" type="button">Yes, I am 21+</button>
-      <button id="age-no" type="button">No</button>
+      <button id="enter-site" type="button" disabled>Enter Site</button>
+      <button id="age-no" type="button">Exit</button>
     </div>
   </div>
 </div>

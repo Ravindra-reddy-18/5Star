@@ -504,8 +504,6 @@ a {
     grid-row: span 2;
   }
 }
-/* ===== AGE GATE ===== */
-
 body.age-gate-open {
   overflow: hidden;
 }
@@ -546,15 +544,33 @@ body.age-gate-open {
   margin-bottom: 0.75rem;
 }
 
-.age-note {
-  font-size: 0.95rem;
+.dob-label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: var(--text);
+}
+
+.age-gate-content input[type="date"] {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background: var(--card);
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.age-error {
+  min-height: 1.25rem;
+  color: #ff8a8a;
+  font-size: 0.9rem;
 }
 
 .age-buttons {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
@@ -566,23 +582,19 @@ body.age-gate-open {
   cursor: pointer;
 }
 
-#age-yes {
+#enter-site {
   background: var(--accent);
   color: var(--primary);
+}
+
+#enter-site:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 #age-no {
   background: #333;
   color: var(--text);
-}
-
-#age-yes:hover,
-#age-no:hover {
-  opacity: 0.95;
-}
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }
 .sms-consent {
   display: flex;
