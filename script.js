@@ -1,36 +1,56 @@
-const buttons = document.querySelectorAll(".carousel-btn, .featured-btn");
+const FEATURED_AUTOPLAY_MS = 3000;
+const FEATURED_TRACK_SELECTOR = '[data-carousel-track="featured"]';
+const CAROUSEL_BUTTON_SELECTOR = ".carousel-btn, .featured-btn";
+const AGE_VERIFIED_KEY = "ageVerified";
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const trackName = button.dataset.carousel;
-    const direction = button.dataset.direction;
+const ageGate = document.getElementById("age-gate");
+const dobInput = document.getElementById("dob");
+const enterSiteBtn = document.getElementById("enter-site");
+const ageNoBtn = document.getElementById("age-no");
+const ageError = document.getElementById("age-error");
+const consentCheck = document.getElementById("sms-consent-check");
+const smsJoinBtn = document.getElementById("sms-join-btn");
 
-    const track = document.querySelector(
-      `[data-carousel-track="${trackName}"]`
-    );
+function getCarouselTrack(trackName) {
+  return document.querySelector(`[data-carousel-track="${trackName}"]`);
+}
 
-    if (!track) return;
+function updateSmsJoinState(isEnabled) {
+  if (!smsJoinBtn) return;
 
-    // Featured should move 1 full slide; others can move 70% width
-    const isFeatured = trackName === "featured";
-    const scrollAmount = isFeatured ? track.clientWidth : track.clientWidth * 0.7;
+  smsJoinBtn.classList.toggle("cta-disabled", !isEnabled);
+  smsJoinBtn.setAttribute("aria-disabled", String(!isEnabled));
+}
 
-    track.scrollBy({
-      left: direction === "next" ? scrollAmount : -scrollAmount,
-      behavior: "smooth",
+function initCarousels() {
+  const buttons = document.querySelectorAll(CAROUSEL_BUTTON_SELECTOR);
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const { carousel: trackName, direction } = button.dataset;
+      const track = getCarouselTrack(trackName);
+
+      if (!track) return;
+
+      const scrollAmount =
+        trackName === "featured" ? track.clientWidth : track.clientWidth * 0.7;
+
+      track.scrollBy({
+        left: direction === "next" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      });
     });
   });
-});
-const featuredTrack = document.querySelector(
-  '[data-carousel-track="featured"]'
-);
+}
 
-if (featuredTrack) {
-  let autoSlideInterval;
+function initFeaturedAutoplay() {
+  const featuredTrack = document.querySelector(FEATURED_TRACK_SELECTOR);
+
+  if (!featuredTrack || featuredTrack.children.length < 2) return;
+
+  let autoSlideInterval = null;
   let currentIndex = 0;
-
-  const slides = featuredTrack.children;
-  const totalSlides = slides.length;
+  const totalSlides = featuredTrack.children.length;
 
   function goToSlide(index) {
     featuredTrack.scrollTo({
@@ -39,39 +59,31 @@ if (featuredTrack) {
     });
   }
 
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      currentIndex++;
-
-      if (currentIndex >= totalSlides) {
-        currentIndex = 0; // loop back to start
-      }
-
-      goToSlide(currentIndex);
-    }, 3000); // change speed here (6000ms = 6s)
-  }
-
   function stopAutoSlide() {
     clearInterval(autoSlideInterval);
+    autoSlideInterval = null;
   }
 
-  // Pause on hover
+  function startAutoSlide() {
+    stopAutoSlide();
+
+    autoSlideInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      goToSlide(currentIndex);
+    }, FEATURED_AUTOPLAY_MS);
+  }
+
   featuredTrack.addEventListener("mouseenter", stopAutoSlide);
   featuredTrack.addEventListener("mouseleave", startAutoSlide);
+  window.addEventListener("blur", stopAutoSlide);
+  window.addEventListener("focus", startAutoSlide);
 
-  // Start autoplay
   startAutoSlide();
 }
-const ageGate = document.getElementById("age-gate");
-const dobInput = document.getElementById("dob");
-const enterSiteBtn = document.getElementById("enter-site");
-const ageNoBtn = document.getElementById("age-no");
-const ageError = document.getElementById("age-error");
 
 function setMaxDobToToday() {
   if (!dobInput) return;
-  const today = new Date().toISOString().split("T")[0];
-  dobInput.max = today;
+  dobInput.max = new Date().toISOString().split("T")[0];
 }
 
 function calculateAge(dobString) {
@@ -83,22 +95,17 @@ function calculateAge(dobString) {
   const dayDiff = today.getDate() - dob.getDate();
 
   if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-    age--;
+    age -= 1;
   }
 
   return age;
 }
 
-function openAgeGate() {
+function setAgeGateOpen(isOpen) {
   if (!ageGate) return;
-  document.body.classList.add("age-gate-open");
-  ageGate.classList.remove("hidden");
-}
 
-function closeAgeGate() {
-  if (!ageGate) return;
-  document.body.classList.remove("age-gate-open");
-  ageGate.classList.add("hidden");
+  document.body.classList.toggle("age-gate-open", isOpen);
+  ageGate.classList.toggle("hidden", !isOpen);
 }
 
 function validateDob() {
@@ -120,47 +127,43 @@ function validateDob() {
     return;
   }
 
-  if (age >= 21) {
-    enterSiteBtn.disabled = false;
-    ageError.textContent = "";
-  } else {
-    enterSiteBtn.disabled = true;
-    ageError.textContent = "You must be 21 or older to enter.";
-  }
+  const isOfAge = age >= 21;
+  enterSiteBtn.disabled = !isOfAge;
+  ageError.textContent = isOfAge ? "" : "You must be 21 or older to enter.";
 }
 
-if (ageGate && dobInput && enterSiteBtn && ageNoBtn && ageError) {
+function initAgeGate() {
+  if (!ageGate || !dobInput || !enterSiteBtn || !ageNoBtn || !ageError) return;
+
   setMaxDobToToday();
-
-  const alreadyVerified = localStorage.getItem("ageVerified") === "true";
-
-  if (alreadyVerified) {
-    closeAgeGate();
-  } else {
-    openAgeGate();
-  }
+  setAgeGateOpen(localStorage.getItem(AGE_VERIFIED_KEY) !== "true");
 
   dobInput.addEventListener("input", validateDob);
   dobInput.addEventListener("change", validateDob);
 
   enterSiteBtn.addEventListener("click", () => {
     if (enterSiteBtn.disabled) return;
-    localStorage.setItem("ageVerified", "true");
-    closeAgeGate();
+
+    localStorage.setItem(AGE_VERIFIED_KEY, "true");
+    setAgeGateOpen(false);
   });
 
   ageNoBtn.addEventListener("click", () => {
     window.location.href = "https://www.google.com";
   });
 }
-const consentCheck = document.getElementById("sms-consent-check");
-const smsJoinBtn = document.getElementById("sms-join-btn");
 
-if (consentCheck && smsJoinBtn) {
+function initSmsConsent() {
+  if (!consentCheck || !smsJoinBtn) return;
+
+  updateSmsJoinState(consentCheck.checked);
+
   consentCheck.addEventListener("change", () => {
-    const isChecked = consentCheck.checked;
-
-    smsJoinBtn.classList.toggle("cta-disabled", !isChecked);
-    smsJoinBtn.setAttribute("aria-disabled", String(!isChecked));
+    updateSmsJoinState(consentCheck.checked);
   });
 }
+
+initCarousels();
+initFeaturedAutoplay();
+initAgeGate();
+initSmsConsent();
