@@ -163,6 +163,20 @@ function initSmsConsent() {
   });
 }
 
+function reorderHomepageSections() {
+  const bourbonSection = document.getElementById("allocations");
+  const craftBeerSection = document.getElementById("craft-beers");
+
+  if (!bourbonSection || !craftBeerSection) return;
+
+  const nextSection = bourbonSection.nextElementSibling;
+
+  if (nextSection !== craftBeerSection) {
+    bourbonSection.insertAdjacentElement("afterend", craftBeerSection);
+  }
+}
+
+reorderHomepageSections();
 initCarousels();
 initFeaturedAutoplay();
 initAgeGate();
