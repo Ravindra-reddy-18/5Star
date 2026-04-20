@@ -87,6 +87,16 @@ a {
   background: var(--muted);
 }
 
+#about-us,
+#allocations,
+#craft-beers,
+#tequilas,
+#champagnes,
+#deals,
+#contact {
+  scroll-margin-top: 7rem;
+}
+
 .cta {
   background: var(--accent);
   color: var(--primary);
@@ -108,6 +118,12 @@ a {
   background: linear-gradient(120deg, var(--primary) 0%, var(--secondary) 60%);
 }
 
+.about-hero {
+  background:
+    radial-gradient(circle at top left, rgba(212, 175, 55, 0.2), transparent 34%),
+    linear-gradient(120deg, #111111 0%, #181818 48%, #0d0d0d 100%);
+}
+
 .eyebrow {
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -119,6 +135,11 @@ a {
 .hero h1 {
   font-size: clamp(2rem, 3vw, 3rem);
   margin-bottom: 1rem;
+}
+
+.about-hero h1,
+.about-hero > div:first-child .eyebrow {
+  color: var(--accent);
 }
 
 .hero-copy {
@@ -137,6 +158,11 @@ a {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
 }
 
+.about-hero .hero-card {
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  background: linear-gradient(180deg, rgba(34, 27, 11, 0.95) 0%, rgba(22, 22, 22, 0.98) 100%);
+}
+
 .hero-card h2 {
   font-size: 1.4rem;
   margin-bottom: 0.75rem;
@@ -145,6 +171,12 @@ a {
 .hero-card ul {
   margin-top: 1rem;
   padding-left: 1rem;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .content-section {
