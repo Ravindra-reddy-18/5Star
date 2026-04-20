@@ -208,20 +208,85 @@
       </div>
 
       <div class="hero-card">
-  <p class="eyebrow">Never Miss a Rare Bourbon</p>
-  <h2>Get instant alerts when rare bottles land and weekly deals go live.</h2>
-  <p class="hero-copy">
-    Join the text list for rare bourbon drops, craft beer releases, and limited in-store deals in Crown Point. Fast updates, no clutter.
-  </p>
+        <p class="eyebrow">Never Miss a Rare Bourbon</p>
+        <h2>Get instant alerts when rare bottles land and weekly deals go live.</h2>
+        <p class="hero-copy">
+          Join the text list for rare bourbon drops, craft beer releases, and limited in-store deals in Crown Point.
+        </p>
 
-  <label class="sms-consent">
-    <input type="checkbox" id="sms-consent-check" />
-    <span>
-      I confirm I am 21+ and agree to receive SMS from Five Star Liquor. Message and data rates may apply.
-    </span>
-  </label>
-  <a class="cta cta-disabled" id="sms-join-btn" aria-disabled="true" href="https://app2.simpletexting.com/join/joinWebForm?webFormId=69d502d57f9323676e68a7f7&c=USA" target="_blank">Register for Alerts</a>
-</div>
+        <div class="st-signupform">
+          <form
+            id="st-join-web-form-69d502d57f9323676e68a7f7"
+            class="st-signupform-content"
+            action="https://app2.simpletexting.com/join/joinContact"
+            method="POST"
+          >
+            <div class="step1-form">
+              <div class="required">
+                <label class="st-signupform__label" for="phone">
+                  Phone
+                  <span class="required-mark" aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  placeholder="(XXX) XXX-XXXX"
+                  maxlength="1600"
+                  data-type="phone"
+                />
+              </div>
+
+              <div id="js-error-phone" class="st-error-message"></div>
+
+              <div class="st-terms-and-conditions">
+                <div class="st-checkbox terms-checkbox">
+                  <input id="terms-agreed-checkbox-69d502d57f9323676e68a7f7" type="checkbox" name="terms-agreed" />
+                  <label class="st-terms-and-conditions-text" for="terms-agreed-checkbox-69d502d57f9323676e68a7f7">
+                    Terms and conditions
+                  </label>
+                </div>
+                <div class="st-terms-and-conditions-caption st-font-caption">
+                  <div>
+                    I agree to receive promotional messages from Five Star Liquors. This agreement
+                    is not a condition of any purchase. I also agree to the
+                    <a href="https://app2.simpletexting.com/web-forms/terms/69d502d57f9323676e68a7f7" target="_blank" rel="noreferrer">Terms of Service</a>
+                    and
+                    <a href="https://app2.simpletexting.com/web-forms/privacy-policy/69d502d57f9323676e68a7f7" target="_blank" rel="noreferrer">Privacy Policy</a>.
+                    Msg & Data rates may apply.
+                  </div>
+                  <div>
+                    By submitting this form, I agree that my mobile information will not be shared with third
+                    parties/affiliates for marketing or promotional purposes. Text STOP to opt out. Text HELP for
+                    assistance. Contact us at
+                    <a href="mailto:contactus@fivestarliquorscp.com">contactus@fivestarliquorscp.com</a>.
+                  </div>
+                </div>
+                <div class="st-signupform-terms-agreed-error st-hidden">
+                  You have to agree to the terms in order to subscribe.
+                </div>
+              </div>
+
+              <div class="st-join-web-form-submit-button-box">
+                <button id="subscribeNow" type="submit">Subscribe now</button>
+                <p class="st-signupform-server-error-message st-hidden"></p>
+              </div>
+            </div>
+
+            <div class="step2-confirmationText st-hidden">
+              <p>
+                Just one more step. We sent a text to %%phone%% to confirm your subscription. Please reply Y or Yes to
+                finish signing up for messages from Five Star Liquor.
+              </p>
+            </div>
+
+            <footer>
+              SMS marketing powered by
+              <a href="https://www.simpletexting.com" title="SMS marketing - SimpleTexting.com" target="_blank" rel="noreferrer">SimpleTexting</a>
+            </footer>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- ALLOCATIONS SECTION -->
