@@ -1,6 +1,7 @@
 const FEATURED_AUTOPLAY_MS = 3000;
 const FEATURED_TRACK_SELECTOR = '[data-carousel-track="featured"]';
 const CAROUSEL_BUTTON_SELECTOR = ".carousel-btn, .featured-btn";
+const SOLD_OUT_SELECTOR = '[data-sold-out="true"]';
 const AGE_VERIFIED_KEY = "ageVerified";
 const SIMPLETEXTING_FORM_ID = "69d502d57f9323676e68a7f7";
 const SIMPLETEXTING_DUPLICATE_EMAIL = "DuplicateContactEmailException";
@@ -34,6 +35,26 @@ function initCarousels() {
         left: direction === "next" ? scrollAmount : -scrollAmount,
         behavior: "smooth",
       });
+    });
+  });
+}
+
+function moveSoldOutItemsToEnd() {
+  const tracks = document.querySelectorAll("[data-carousel-track]");
+
+  tracks.forEach((track) => {
+    const soldOutItems = Array.from(track.children).filter((item) =>
+      item.matches(SOLD_OUT_SELECTOR)
+    );
+
+    soldOutItems.forEach((item) => {
+      const productName = item.querySelector("h2, h3")?.textContent.trim();
+
+      if (productName) {
+        item.setAttribute("aria-label", `${productName} - sold out`);
+      }
+
+      track.appendChild(item);
     });
   });
 }
@@ -301,6 +322,7 @@ function reorderHomepageSections() {
 }
 
 reorderHomepageSections();
+moveSoldOutItemsToEnd();
 initCarousels();
 initFeaturedAutoplay();
 initAgeGate();
